@@ -1,0 +1,1252 @@
+{
+  "gameId": "OLDWORLD",
+  "gameItemCategories": [
+    {
+      "id": "Z_RUNES",
+      "name": "Runes",
+      "subCategories": [
+        { "id": "RUNE_TALISMAN", "name": "Taslimnatic Runes" },
+        { "id": "RUNE_BANNER", "name": "Banner Runes" },
+        { "id": "RUNE_WEAPON", "name": "Weapon Runes" },
+        { "id": "RUNE_ARMOR", "name": "Armo Runes" }
+      ]
+    }
+  ],
+  "unitCategories": [],
+  "gameItems": [
+    {
+      "id": "MOD_DWF_CHAMP_WARRIOR",
+      "mainCategory": { "category": "LINKED_UNIT", "subCategory": "CHAMPION" },
+      "cost": 0,
+      "name": "Dwarf Warrior Champion",
+      "maxNumber": 1
+    },
+    {
+      "id": "MOD_DWF_MUSIC_WARRIOR",
+      "mainCategory": { "category": "LINKED_UNIT", "subCategory": "MUSIC" },
+      "cost": 0,
+      "name": "Dwarf Warrior Music",
+      "maxNumber": 1
+    },
+    {
+      "id": "MOD_DWF_BANNER_WARRIOR",
+      "mainCategory": { "category": "LINKED_UNIT", "subCategory": "BANNER" },
+      "cost": 0,
+      "name": "Dwarf Warrior BAnner",
+      "maxNumber": 1
+    },
+    {
+      "id": "WEA_DWF_BIGHAMMER",
+      "mainCategory": { "category": "WEAPON", "subCategory": "" },
+      "name": "Big Hammer",
+      "maxNumber": 1
+    },
+    {
+      "id": "WEA_DWF_DRACO_CANNON",
+
+      "mainCategory": { "category": "WEAPON", "subCategory": "" },
+      "name": "Draco Cannon",
+      "maxNumber": 1
+    },
+    {
+      "id": "WEA_DWF_TORPEDO_TROLL_HAMMER",
+
+      "name": "Torpedo Troll Hammer",
+      "mainCategory": { "category": "WEAPON", "subCategory": "" },
+      "maxNumber": 1
+    },
+    {
+      "id": "WEA_DWF_BLAZE_BOMB",
+
+      "mainCategory": { "category": "WEAPON", "subCategory": "" },
+      "name": "Blaze Bomb",
+      "maxNumber": 1
+    },
+    {
+      "id": "WEA_DWF_BRACE_OF_DRACO_PISTOLS",
+
+      "mainCategory": { "category": "WEAPON", "subCategory": "" },
+      "name": "Brace of Draco Pistols",
+      "maxNumber": 1
+    },
+    {
+      "id": "MOU_DWF_OATHSTONE",
+      "mainCategory": { "category": "LINKED_UNIT", "subCategory": "MOUNT" },
+      "name": "Shieldbeares",
+      "maxNumber": 1
+    },
+    {
+      "id": "MOU_DWF_SHIELDBEARERS",
+      "mainCategory": { "category": "LINKED_UNIT", "subCategory": "MOUNT" },
+      "name": "Shieldbeares",
+      "maxNumber": 1
+    },
+    {
+      "id": "Z_RWEA_1",
+
+      "mainCategory": { "category": "Z_RUNES", "subCategory": "RUNE_WEAPON" },
+      "name": "Destruction Magistral Rune",
+      "cost": 75,
+      "maxNumber": 1
+    },
+    {
+      "id": "Z_RWEA_2",
+      "mainCategory": { "category": "Z_RUNES", "subCategory": "RUNE_WEAPON" },
+
+      "name": "Skalf Blackhammer Magistral Rune",
+      "cost": 65,
+      "maxNumber": 1
+    },
+
+    {
+      "id": "Z_RARM_1",
+      "mainCategory": { "category": "Z_RUNES", "subCategory": "RUNE_ARMOR" },
+
+      "name": "Adamantina Magistral Rune",
+      "cost": 100,
+      "maxNumber": 1
+    },
+    {
+      "id": "Z_RARM_2",
+      "name": "Gromril Magistral Rune",
+
+      "mainCategory": { "category": "Z_RUNES", "subCategory": "RUNE_ARMOR" },
+      "cost": 45,
+      "maxNumber": 1
+    },
+
+    {
+      "id": "Z_RTAL_1",
+      "list": "Z_RUNE_TALISMAN",
+
+      "name": "Charm Magistral Rune",
+      "mainCategory": { "category": "Z_RUNES", "subCategory": "RUNE_TALISMAN" },
+      "cost": 50,
+      "maxNumber": 1
+    },
+    {
+      "id": "Z_RTAL_2",
+      "name": "Balance Magistral Rune",
+
+      "mainCategory": { "category": "Z_RUNES", "subCategory": "RUNE_TALISMAN" },
+      "cost": 35,
+      "maxNumber": 1
+    },
+    {
+      "id": "Z_RTAL_1",
+      "name": "Grungni Magistral Rune",
+
+      "mainCategory": { "category": "Z_RUNES", "subCategory": "RUNE_BANNER" },
+      "cost": 80,
+      "maxNumber": 1
+    },
+    {
+      "id": "Z_BAN_1",
+      "name": "Stromni Redbeard Magistral Rune",
+
+      "mainCategory": { "category": "Z_RUNES", "subCategory": "RUNE_BANNER" },
+      "cost": 45,
+      "maxNumber": 1
+    }
+  ],
+  "unitProfiles": [
+    {
+      "id": "MOD_DWF_KING",
+      "mainCategory": {
+        "category": "UNIT_CATEGORY",
+        "subCategory": "CHARACTER"
+      },
+      "otherCategories": [
+        { "category": "UNIT_TYPE", "subCategory": "HEAVY_INFANTRY" }
+      ],
+      "name": "Dwarf King",
+      "cost": 125,
+      "minNumber": 1,
+      "maxNumber": 1,
+
+      "optionSections": [
+        {
+          "sectionName": "Weapons",
+          "target": "BASE",
+          "optionType": "OPTION",
+          "optionEntries": [
+            {
+              "id": "1",
+              "items": ["WEA_HAND_WEAPON"],
+              "cost": 0,
+
+              "selected": true
+            },
+            {
+              "id": "2",
+              "items": ["WEA_GREAT_WEAPON"],
+
+              "cost": 4
+            },
+            {
+              "id": "3",
+              "items": ["WEA_HAND_WEAPON", "WEA_CROSSBOW"],
+
+              "cost": 6
+            },
+            {
+              "id": "4",
+              "items": ["WEA_HAND_WEAPON", "WEA_HANDGUN"],
+
+              "cost": 6
+            }
+          ]
+        },
+        {
+          "sectionName": "Armor",
+          "target": "BASE",
+          "optionType": "OPTION",
+          "optionEntries": [
+            {
+              "id": "5",
+              "items": ["ARM_FULL_PLATE"],
+
+              "cost": 0,
+              "selected": true
+            }
+          ]
+        },
+        {
+          "sectionName": "Options",
+          "target": "EXTRA",
+          "optionType": "CHECK",
+          "optionEntries": [
+            {
+              "id": "6",
+              "items": ["WEA_PISTOL"],
+              "cost": 0
+            },
+            {
+              "id": "7",
+              "items": ["ARM_SHIELD"],
+              "cost": 5
+            }
+          ]
+        },
+        {
+          "sectionName": "Mount",
+          "target": "BASE",
+          "optionType": "OPTION",
+          "optionEntries": [
+            {
+              "id": "8",
+              "items": [],
+              "cost": 5,
+              "selected": true
+            },
+            {
+              "id": "9",
+              "items": ["MOU_DWF_OATHSTONE"],
+              "cost": 15,
+              "selected": true
+            },
+            {
+              "id": "10",
+              "items": ["MOU_DWF_SHIELDBEARERS"],
+              "cost": 15,
+              "selected": true
+            }
+          ]
+        },
+        {
+          "sectionName": "Options",
+          "optionCategory": "OPTIONS",
+          "optionType": "CHECK",
+          "target": "BASE",
+          "cost": 125,
+          "feedingCategory": "Z_RUNES",
+          "optionEntries": [
+            {
+              "id": "11",
+              "items": ["RUNE_WEAPON"]
+            },
+            {
+              "id": "11",
+              "items": ["RUNE_ARMOR"]
+            },
+            {
+              "id": "11",
+              "items": ["RUNE_TALISMAN"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MOD_DWF_THANE",
+      "name": "Thane",
+      "mainCategory": {
+        "category": "UNIT_CATEGORY",
+        "subCategory": "CHARACTER"
+      },
+      "cost": 75,
+      "otherCategories": [
+        { "category": "UNIT_TYPE", "subCategory": "HEAVY_INFANTRY" }
+      ],
+      "minNumber": 1,
+      "maxNumber": 1,
+
+      "optionSections": [
+        {
+          "sectionName": "Weapons",
+          "target": "BASE",
+          "optionType": "OPTION",
+          "optionEntries": [
+            {
+              "id": "1",
+              "items": ["WEA_HAND_WEAPON"],
+              "cost": 0,
+
+              "selected": true
+            },
+            {
+              "id": "2",
+              "items": ["WEA_GREAT_WEAPON"],
+
+              "cost": 4
+            },
+            {
+              "id": "3",
+              "items": ["WEA_HAND_WEAPON", "WEA_CROSSBOW"],
+
+              "cost": 6
+            },
+            {
+              "id": "4",
+              "items": ["WEA_HAND_WEAPON", "WEA_HANDGUN"],
+
+              "cost": 6
+            }
+          ]
+        },
+        {
+          "sectionName": "Armor",
+          "target": "BASE",
+          "optionType": "OPTION",
+          "optionEntries": [
+            {
+              "id": "5",
+              "items": ["ARM_FULL_PLATE"],
+
+              "cost": 0,
+              "selected": true
+            }
+          ]
+        },
+        {
+          "sectionName": "Options",
+          "target": "EXTRA",
+          "optionType": "CHECK",
+          "optionEntries": [
+            {
+              "id": "6",
+              "items": ["WEA_PISTOL"],
+              "cost": 0
+            },
+            {
+              "id": "7",
+              "items": ["ARM_SHIELD"],
+              "cost": 5
+            }
+          ]
+        },
+        {
+          "sectionName": "Mount",
+          "target": "BASE",
+          "optionType": "OPTION",
+          "optionEntries": [
+            {
+              "id": "8",
+              "items": [],
+              "cost": 5,
+              "selected": true
+            },
+            {
+              "id": "9",
+              "items": ["MOU_DWF_OATHSTONE"],
+              "cost": 15,
+              "selected": true
+            },
+            {
+              "id": "10",
+              "items": ["MOU_DWF_SHIELDBEARERS"],
+              "cost": 15,
+              "selected": true
+            }
+          ]
+        },
+        {
+          "sectionName": "Options",
+          "optionCategory": "OPTIONS",
+          "optionType": "CHECK",
+          "target": "BASE",
+          "cost": 125,
+          "feedingCategory": "Z_RUNES",
+          "optionEntries": [
+            {
+              "id": "11",
+              "items": ["RUNE_WEAPON"]
+            },
+            {
+              "id": "11",
+              "items": ["RUNE_ARMOR"]
+            },
+            {
+              "id": "11",
+              "items": ["RUNE_TALISMAN"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MOD_DWF_WARRIOR",
+      "gameItemGroup": "UNIT_CATEGORY",
+      "name": "Dwarf Warrior",
+      "unitType": [
+        { "category": "UNIT_TYPE", "subCategory": "HEAVY_INFANTRY" }
+      ],
+      "mainCategory": { "category": "UNIT_CATEGORY", "subCategory": "CORE" },
+      "cost": 8,
+      "minNumber": 5,
+      "maxNumber": 0,
+
+      "optionSections": [
+        {
+          "sectionName": "Command",
+          "optionType": "CHECK",
+          "target": "BASE",
+          "optionEntries": [
+            {
+              "id": "23",
+              "items": ["MOD_DWF_CHAMP_WARRIOR"],
+              "cost": 5,
+              "costPerModel": false,
+              "childOptionSections": [
+                {
+                  "sectionName": "Runes",
+                  "optionType": "CHECK",
+                  "target": "BASE",
+                  "maxCost": 25,
+                  "feedingCategory": "Z_RUNES",
+                  "optionEntries": [
+                    {
+                      "id": "24",
+                      "items": ["RUNE_WEAPON"]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "25",
+              "items": ["MOD_DWF_MUSIC_WARRIOR"],
+              "costPerModel": false,
+              "cost": 5
+            },
+            {
+              "id": "26",
+              "items": ["MOD_DWF_BANNER_WARRIOR"],
+              "costPerModel": false,
+              "cost": 5
+            }
+          ]
+        },
+
+        {
+          "sectionName": "Equipment Options",
+          "optionType": "OPTION",
+          "target": "EXTRA",
+          "optionEntries": [
+            {
+              "id": "29",
+              "items": ["WEA_HAND_WEAPON", "ARM_HEAVY_ARMOR"],
+              "cost": 0,
+              "selected": true
+            },
+            {
+              "id": "29",
+              "items": [
+                "WEA_GREAT_WEAPON",
+                "WEA_HAND_WEAPON",
+                "ARM_HEAVY_ARMOR"
+              ],
+
+              "cost": 1,
+              "selected": false
+            },
+            {
+              "id": "30",
+              "items": ["ARM_SHIELD", "WEA_HAND_WEAPON", "ARM_HEAVY_ARMOR"],
+
+              "cost": 1,
+              "selected": false
+            }
+          ]
+        },
+        {
+          "sectionName": "Rule Options",
+          "optionType": "CHECK",
+          "target": "EXTRA",
+          "optionEntries": [
+            {
+              "id": "31",
+              "items": ["RUL_DRILLED"],
+
+              "cost": 1,
+              "selected": false
+            },
+            {
+              "id": "32",
+              "items": ["RUL_VETERANS"],
+
+              "cost": 1,
+              "selected": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MOD_DWF_QUARRELERS",
+      "gameItemGroup": "UNIT_CATEGORY",
+      "name": "Quarellers",
+      "otherCategories": [
+        { "category": "UNIT_TYPE", "subCategory": "HEAVY_INFANTRY" }
+      ],
+      "mainCategory": { "category": "UNIT_CATEGORY", "subCategory": "CORE" },
+      "cost": 10,
+      "minNumber": 5,
+      "maxNumber": 0,
+
+      "optionSections": [
+        {
+          "id": "0",
+          "sectionName": "Weapons",
+          "optionType": "SET",
+          "target": "BASE",
+          "optionEntries": [
+            {
+              "id": "1",
+              "items": ["WEA_HANDGUN", "WEA_HAND_WEAPON"],
+
+              "cost": 0,
+              "selected": true
+            }
+          ]
+        },
+        {
+          "id": "1",
+          "sectionName": "Command",
+          "optionType": "CHECK",
+          "target": "BASE",
+          "optionEntries": [
+            {
+              "id": "1",
+              "items": ["MOD_DWF_CHAMP_QUARRELLER"],
+
+              "cost": 5
+            },
+            {
+              "id": "1",
+              "items": ["MOD_DWF_MUSIC_QUARRELLER"],
+
+              "cost": 5
+            },
+            {
+              "id": "1",
+              "items": ["MOD_DWF_BANNER_QUARRELLER"],
+
+              "cost": 5
+            }
+          ]
+        },
+
+        {
+          "id": "2",
+          "sectionName": "Armor",
+          "optionType": "OPTION",
+          "target": "BASE",
+          "optionEntries": [
+            {
+              "id": "1",
+              "items": ["ARM_HEAVY_ARMOR"],
+
+              "cost": 0,
+              "selected": true
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "sectionName": "Options",
+          "optionType": "CHECK",
+          "target": "EXTRA",
+          "optionEntries": [
+            {
+              "id": "0",
+              "items": ["WEA_GREAT_WEAPON"],
+
+              "cost": 1,
+              "selected": true
+            },
+            {
+              "id": "1",
+              "items": ["ARM_SHIELD"],
+
+              "cost": 1,
+              "selected": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MOD_DWF_LONGBEARD",
+      "gameItemGroup": "UNIT_CATEGORY",
+      "name": "Longbeards",
+      "otherCategories": [
+        { "category": "UNIT_TYPE", "subCategory": "HEAVY_INFANTRY" }
+      ],
+      "mainCategory": { "category": "UNIT_CATEGORY", "subCategory": "SPECIAL" },
+      "cost": 12,
+      "minNumber": 5,
+      "maxNumber": 0,
+
+      "optionSections": [
+        {
+          "sectionName": "Weapons",
+          "optionType": "SET",
+          "target": "BASE",
+          "optionEntries": [
+            {
+              "id": "33",
+              "items": ["WEA_HAND_WEAPON"],
+
+              "cost": 0,
+              "selected": true
+            }
+          ]
+        },
+        {
+          "sectionName": "Armor",
+          "optionType": "OPTION",
+          "target": "BASE",
+          "optionEntries": [
+            {
+              "id": "34",
+              "items": ["ARM_HEAVY_ARMOR"],
+
+              "cost": 0,
+              "selected": true
+            }
+          ]
+        },
+        {
+          "sectionName": "Command",
+          "optionType": "CHECK",
+          "target": "BASE",
+          "optionEntries": [
+            {
+              "id": "35",
+              "items": ["MOD_DWF_CHAMP_LONGBEARD"],
+
+              "cost": 5
+            },
+            {
+              "id": "38",
+              "items": ["MOD_DWF_MUSIC_LONGBEARD"],
+
+              "cost": 5
+            },
+            {
+              "id": "39",
+              "items": ["MOD_DWF_BANNER_LONGBEARD"],
+
+              "cost": 5
+            }
+          ]
+        },
+
+        {
+          "sectionName": "Options",
+          "optionType": "CHECK",
+          "target": "EXTRA",
+          "optionEntries": [
+            {
+              "id": "41",
+              "items": ["WEA_GREAT_WEAPON"],
+
+              "cost": 1,
+              "selected": true
+            },
+            {
+              "id": "42",
+              "items": ["ARM_SHIELD"],
+
+              "cost": 1,
+              "selected": true
+            },
+            {
+              "id": "43",
+              "items": ["RUL_DRILLED"],
+              "cost": 1,
+              "selected": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MOD_DWF_CANNON",
+      "gameItemGroup": "UNIT_CATEGORY",
+      "name": "Cannon",
+      "otherCategories": [
+        { "category": "UNIT_TYPE", "subCategory": "WAR_MACHINE" }
+      ],
+      "mainCategory": { "category": "UNIT_CATEGORY", "subCategory": "SPECIAL" },
+      "cost": 100,
+      "minNumber": 1,
+      "maxNumber": 1,
+
+      "optionSections": [
+        {
+          "sectionName": "Weapons",
+          "optionType": "OPTION",
+          "target": "BASE",
+          "optionEntries": [
+            {
+              "id": "44",
+              "items": ["WEA_CANNON. WEA_HANDGUN"],
+
+              "cost": 0,
+              "selected": true
+            }
+          ]
+        },
+        {
+          "sectionName": "Armor",
+          "optionType": "OPTION",
+          "target": "BASE",
+          "optionEntries": [
+            {
+              "id": "45",
+              "items": ["ARM_LIGHT_ARMOR"],
+
+              "cost": 0,
+              "selected": true
+            }
+          ]
+        },
+        {
+          "sectionName": "Crew",
+          "optionType": "OPTION",
+          "target": "BASE",
+          "optionEntries": [
+            {
+              "id": "46",
+              "items": ["MOD_DWF_CANNON_CREW"],
+              "cost": 0,
+              "selected": true
+            }
+          ]
+        },
+        {
+          "sectionName": "Runes",
+          "optionType": "CHECK",
+          "target": "BASE",
+          "feedingCategory": "Z_RUNES",
+          "maxCost": 100,
+          "optionEntries": [
+            {
+              "id": "47",
+              "items": ["engineering-runes"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MOD_DWF_ORGAN_CANNON",
+      "gameItemGroup": "UNIT_CATEGORY",
+      "name": "Organ Cannon",
+      "mainCategory": {
+        "category": "UNIT_CATEGORY",
+        "subCategory": "SINGULAR"
+      },
+      "otherCategories": [
+        { "category": "UNIT_TYPE", "subCategory": "WAR_MACHINE" }
+      ],
+      "cost": 130,
+
+      "minNumber": 1,
+      "maxNumber": 1,
+
+      "optionSections": [
+        {
+          "sectionName": "Weapons",
+          "optionType": "OPTION",
+          "target": "BASE",
+          "optionEntries": [
+            {
+              "id": "48",
+              "items": ["WEA_CANNON. WEA_HANDGUN"],
+
+              "cost": 0,
+              "selected": true
+            }
+          ]
+        },
+        {
+          "sectionName": "Armor",
+          "optionType": "OPTION",
+          "target": "BASE",
+          "optionEntries": [
+            {
+              "id": "49",
+              "items": ["ARM_LIGHT_ARMOR"],
+
+              "cost": 0,
+              "selected": true
+            }
+          ]
+        },
+        {
+          "sectionName": "Crew",
+          "optionType": "OPTION",
+          "target": "BASE",
+          "optionEntries": [
+            {
+              "id": "50",
+              "items": ["MOD_DWF_CANNON_CREW"],
+
+              "cost": 0,
+              "selected": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MOD_DWF_IRONDRAKE",
+      "gameItemGroup": "UNIT_CATEGORY",
+      "name": "Irondrake",
+      "mainCategory": {
+        "category": "UNIT_CATEGORY",
+        "subCategory": "SINGULAR"
+      },
+      "otherCategories": [
+        { "category": "UNIT_TYPE", "subCategory": "WAR_MACHINE" }
+      ],
+      "cost": 15,
+      "minNumber": 5,
+      "maxNumber": 1,
+
+      "optionSections": [
+        {
+          "sectionName": "Weapon",
+          "optionType": "OPTION",
+          "target": "BASE",
+          "optionEntries": [
+            {
+              "id": "51",
+              "items": ["WEA_HANDGUN", "WEA_DRAKECANON"],
+
+              "cost": 0,
+              "selected": true
+            }
+          ]
+        },
+        {
+          "sectionName": "Armor",
+          "optionType": "OPTION",
+          "target": "BASE",
+          "optionEntries": [
+            {
+              "id": "52",
+              "items": ["ARM_FULL_PLATE"],
+
+              "cost": 0,
+              "selected": true
+            }
+          ]
+        },
+        {
+          "sectionName": "Command",
+          "optionType": "CHECK",
+          "target": "BASE",
+          "optionEntries": [
+            {
+              "id": "53",
+              "items": ["MOD_DWF_CHAMP_IRONDRAKE"],
+
+              "cost": 6
+            },
+            {
+              "id": "58",
+              "items": ["MOD_DWF_MUSIC_IRONDRAKE"],
+
+              "cost": 5
+            },
+            {
+              "id": "59",
+              "items": ["MOD_DWF_BANNER_IRONDRAKE"],
+
+              "cost": 5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "linkedUnitProfiles": [
+    {
+      "id": "MOD_DWF_CHAMP_WARRIOR",
+      "name": "Veteran",
+      "mainCategory": { "category": "LINKED_UNIT", "subCategory": "CORE" },
+      "otherCategories": [
+        { "category": "UNIT_TYPE", "subCategory": "WAR_MACHINE" }
+      ],
+      "cost": 0,
+      "minNumber": 1,
+      "maxNumber": 1,
+      "optionSections": [
+        {
+          "sectionName": "Runes",
+          "optionType": "CHECK",
+          "target": "BASE",
+          "maxCost": 25,
+          "feedingCategory": "Z_RUNES",
+          "optionEntries": [
+            {
+              "id": "24",
+              "items": ["RUNE_WEAPON"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MOD_DWF_MUSIC_WARRIOR",
+      "gameItemGroup": "LINKED_UNIT",
+      "mainCategory": { "category": "UNIT_CATEGORY", "subCategory": "CORE" },
+      "otherCategories": [
+        { "category": "UNIT_TYPE", "subCategory": "WAR_MACHINE" }
+      ],
+      "cost": 0,
+      "name": "Dwarf Warrior Music",
+      "minNumber": 1,
+      "maxNumber": 1
+    },
+    {
+      "id": "MOD_DWF_BANNER_WARRIOR",
+      "gameItemGroup": "LINKED_UNIT",
+      "mainCategory": { "category": "UNIT_CATEGORY", "subCategory": "CORE" },
+      "otherCategories": [
+        { "category": "UNIT_TYPE", "subCategory": "WAR_MACHINE" }
+      ],
+      "cost": 0,
+      "stats": {},
+      "name": "Dwarf Warrior Music",
+      "minNumber": 1,
+      "maxNumber": 1,
+
+      "optionSections": [
+        {
+          "sectionName": "Runes",
+          "optionType": "CHECK",
+          "target": "BASE",
+          "maxCost": 50,
+          "feedingCategory": "Z_RUNES",
+          "optionEntries": [
+            {
+              "id": "27",
+              "items": ["RUNE_BANNER"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MOD_DWF_CHAMP_QUARRELER",
+      "gameItemGroup": "LINKED_UNIT",
+      "name": "Veteran",
+      "mainCategory": { "category": "UNIT_CATEGORY", "subCategory": "CORE" },
+      "otherCategories": [
+        { "category": "UNIT_TYPE", "subCategory": "WAR_MACHINE" }
+      ],
+      "cost": 0,
+      "minNumber": 1,
+      "maxNumber": 1,
+
+      "optionSections": [
+        {
+          "id": "6",
+          "sectionName": "Weapon",
+          "optionType": "OPTION",
+          "target": "BASE",
+          "optionEntries": [
+            {
+              "id": "1",
+              "items": ["WEA_HANDGUN", "WEA_HAND_WEAPON"],
+
+              "cost": 0
+            },
+            {
+              "id": "1",
+              "items": ["WEA_PISTOL", "WEA_HAND_WEAPON"],
+
+              "cost": 0,
+              "selected": true
+            },
+            {
+              "id": "1",
+              "items": ["WEA_BRACE_OF_PISTOLs", "WEA_HAND_WEAPON"],
+
+              "cost": 5,
+              "selected": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MOD_DWF_MUSIC_QUARRELER",
+      "gameItemGroup": "LINKED_UNIT",
+      "mainCategory": { "category": "UNIT_CATEGORY", "subCategory": "CORE" },
+      "otherCategories": [
+        { "category": "UNIT_TYPE", "subCategory": "WAR_MACHINE" }
+      ],
+      "cost": 0,
+      "name": "Dwarf Warrior Music",
+      "minNumber": 1,
+      "maxNumber": 1
+    },
+    {
+      "id": "MOD_DWF_BANNER_QUARRELER",
+      "gameItemGroup": "LINKED_UNIT",
+      "mainCategory": { "category": "UNIT_CATEGORY", "subCategory": "CORE" },
+      "otherCategories": [
+        { "category": "UNIT_TYPE", "subCategory": "WAR_MACHINE" }
+      ],
+      "cost": 0,
+      "name": "Quarreller Music",
+      "minNumber": 1,
+      "maxNumber": 1
+    },
+    {
+      "id": "MOD_DWF_CHAMP_LONGBEARD",
+      "gameItemGroup": "LINKED_UNIT",
+      "name": "Longbeard Venerable",
+      "mainCategory": { "category": "UNIT_CATEGORY", "subCategory": "SPECIAL" },
+      "otherCategories": [
+        { "category": "UNIT_TYPE", "subCategory": "WAR_MACHINE" }
+      ],
+      "cost": 0,
+      "minNumber": 1,
+      "maxNumber": 1,
+
+      "optionSections": [
+        {
+          "sectionName": "Runes",
+          "optionType": "CHECK",
+          "target": "BASE",
+          "maxCost": 25,
+          "feedingCategory": "Z_RUNES",
+          "optionEntries": [
+            {
+              "id": "36",
+              "items": ["RUNE_WEAPON"]
+            }
+          ]
+        },
+        {
+          "sectionName": "Runes",
+          "optionType": "CHECK",
+          "target": "BASE",
+          "feedingCategory": "Z_RUNES",
+          "maxCost": 25,
+          "optionEntries": [
+            {
+              "id": "37",
+              "items": ["RUNE_TALISMAN"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MOD_DWF_MUSIC_LONGBEARD",
+      "gameItemGroup": "LINKED_UNIT",
+      "mainCategory": { "category": "UNIT_CATEGORY", "subCategory": "SPECIAL" },
+      "otherCategories": [
+        { "category": "UNIT_TYPE", "subCategory": "WAR_MACHINE" }
+      ],
+      "cost": 0,
+      "name": "Dwarf Longbeard Music",
+      "minNumber": 1,
+      "maxNumber": 1
+    },
+    {
+      "id": "MOD_DWF_BANNER_LONGBEARD",
+      "gameItemGroup": "LINKED_UNIT",
+      "mainCategory": { "category": "UNIT_CATEGORY", "subCategory": "SPECIAL" },
+      "otherCategories": [
+        { "category": "UNIT_TYPE", "subCategory": "WAR_MACHINE" }
+      ],
+      "cost": 0,
+      "name": "Dwarf Longbeard Music",
+      "minNumber": 1,
+      "maxNumber": 1,
+
+      "optionSections": [
+        {
+          "sectionName": "Runes",
+          "optionType": "CHECK",
+          "target": "BASE",
+          "feedingCategory": "Z_RUNES",
+          "maxCost": 50,
+          "optionEntries": [
+            {
+              "id": "40",
+              "items": ["RUNE_BANNER"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MOD_DWF_CHAMP_IRONDRAKE",
+      "gameItemGroup": "LINKED_UNIT",
+      "mainCategory": {
+        "category": "UNIT_CATEGORY",
+        "subCategory": "SINGULAR"
+      },
+      "name": "Irondrake champion",
+      "otherCategories": [
+        { "category": "UNIT_TYPE", "subCategory": "WAR_MACHINE" }
+      ],
+      "cost": 0,
+      "stats": {
+        "M": 3,
+        "WS": 4,
+        "BS": 3,
+        "S": 3,
+        "T": 4,
+        "W": 1,
+        "I": 2,
+        "A": 2,
+        "L": 9
+      },
+      "minNumber": 1,
+      "maxNumber": 1,
+
+      "optionSections": [
+        {
+          "sectionName": "Weapons",
+          "optionType": "OPTION",
+          "target": "BASE",
+          "optionEntries": [
+            {
+              "id": "54",
+              "items": ["WEA_HANDGUN", "WEA_DRAKECANON"],
+
+              "cost": 25
+            },
+            {
+              "id": "55",
+              "items": ["WEA_HANDGUN", "WEA_BRACE_OF_DRAKE_PISTOLS"],
+
+              "cost": 25
+            },
+            {
+              "id": "56",
+              "items": ["WEA_HANDGUN", "WEA_TROLLHAMMER_TORPEDO"],
+
+              "cost": 25
+            }
+          ]
+        },
+        {
+          "sectionName": "Weapons",
+          "optionType": "CHECK",
+          "target": "EXTRA",
+          "optionEntries": [
+            {
+              "id": "57",
+              "items": ["WEA_CINDERBLAST_BOMB"],
+
+              "cost": 25
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MOD_DWF_MUSIC_IRONDRAKE",
+      "gameItemGroup": "LINKED_UNIT",
+      "mainCategory": {
+        "category": "UNIT_CATEGORY",
+        "subCategory": "SINGULAR"
+      },
+      "otherCategories": [
+        { "category": "UNIT_TYPE", "subCategory": "WAR_MACHINE" }
+      ],
+      "cost": 0,
+      "name": "Dwarf Irondrake Music",
+      "minNumber": 1,
+      "maxNumber": 1
+    },
+    {
+      "id": "MOD_DWF_BANNER_IRONDRAKE",
+      "gameItemGroup": "LINKED_UNIT",
+      "mainCategory": {
+        "category": "UNIT_CATEGORY",
+        "subCategory": "SINGULAR"
+      },
+      "otherCategories": [
+        { "category": "UNIT_TYPE", "subCategory": "WAR_MACHINE" }
+      ],
+      "cost": 0,
+      "name": "Dwarf Irondrake Music",
+      "minNumber": 1,
+      "maxNumber": 1,
+
+      "optionSections": [
+        {
+          "sectionName": "Runes",
+          "optionType": "CHECK",
+          "target": "BASE",
+          "feedingCategory": "Z_RUNES",
+          "maxCost": 50,
+          "optionEntries": [
+            {
+              "id": "60",
+              "items": ["RUNE_BANNER"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MOD_DWF_CANNON_CREW",
+      "gameItemGroup": "LINKED_UNIT",
+      "name": "Cannon Crew",
+      "mainCategory": {
+        "category": "UNIT_CATEGORY",
+        "subCategory": "SINGULAR"
+      },
+      "otherCategories": [
+        { "category": "UNIT_TYPE", "subCategory": "WAR_MACHINE" }
+      ],
+      "cost": 0,
+      "minNumber": 1,
+      "maxNumber": 1
+    }
+  ]
+}

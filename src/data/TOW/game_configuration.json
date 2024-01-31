@@ -1,0 +1,229 @@
+{
+  "id": "TOW",
+  "name": "The Old World",
+  "unitsMainCategory": "UNIT_CATEGORY",
+  "gameItemCategories": [
+    {
+      "id": "WEAPON",
+      "name": "Weapons",
+      "subCategories": [
+        { "id": "COMBAT", "name": "Combat Weapons" },
+        { "id": "RANGE", "name": "Combat Names" }
+      ]
+    },
+    { "id": "ARMOR", "name": "Weapons", "gameItemGroup": "WARGEAR" },
+    {
+      "id": "RULE",
+      "name": "Special Rules",
+      "subCategories": [{ "id": "GENERAL", "name": "General" }]
+    },
+    { "id": "MAGIC", "name": "Magic Items" },
+    {
+      "id": "LINKED_UNIT",
+      "name": "Linked Units",
+      "subCategories": [
+        { "id": "MOUNT", "name": "Mount" },
+        { "id": "BANNER", "name": "Banner" },
+        { "id": "CHAMPION", "name": "Champion" },
+        { "id": "MUSIC", "name": "Music" },
+        { "id": "CREW", "name": "Crew" }
+      ]
+    },
+    {
+      "id": "UNIT_TYPE",
+      "name": "Unit Type",
+      "subCategories": [
+        { "id": "REGULAR_INFANTRY", "name": "Regular Infantry" },
+        { "id": "HEAVY_INFANTRY", "name": "Heavy Infantry" },
+        { "id": "MONSTRUOS_INFANTRY", "name": "Monstrous Infantry" },
+        { "id": "SWARMS", "name": "Swarms" },
+        { "id": "LIGHT_CAVALRY", "name": "Light Cavalry" },
+        { "id": "HEAVY_CAVALRY", "name": "Heavy Cavalry" },
+        { "id": "MONSTRUOS_CAVALRY", "name": "Monstrous Cavalry" },
+        { "id": "WARBEASTS", "name": "WarBeasts" },
+        { "id": "LIGHT_CHARIOTS", "name": "Light Chariots" },
+        { "id": "HEAVY_CHARIOTS", "name": "Heavy Chariots" },
+        { "id": "MONSTRUOS_CREATURES", "name": "Monstrous Creatures" },
+        { "id": "BEHEMOTHS", "name": "Behemoths" },
+        { "id": "WAR_MACHINE", "name": "War Machines" }
+      ]
+    },
+  {
+    "id": "UNIT_CATEGORY",
+    "name": "Unit Category",
+    "subCategories": [
+      { "id": "CORE", "name": "Core" },
+      { "id": "CHARACTER", "name": "Character" },
+      { "id": "SPECIAL", "name": "Special" },
+      { "id": "SINGULAR", "name": "Singular" }
+    ]
+  }],
+    "unitCategories":[
+      {
+        "id": "UNIT_TYPE",
+        "name": "Unit Type",
+        "subCategories": [
+          { "id": "REGULAR_INFANTRY", "name": "Regular Infantry" },
+          { "id": "HEAVY_INFANTRY", "name": "Heavy Infantry" },
+          { "id": "MONSTRUOS_INFANTRY", "name": "Monstrous Infantry" },
+          { "id": "SWARMS", "name": "Swarms" },
+          { "id": "LIGHT_CAVALRY", "name": "Light Cavalry" },
+          { "id": "HEAVY_CAVALRY", "name": "Heavy Cavalry" },
+          { "id": "MONSTRUOS_CAVALRY", "name": "Monstrous Cavalry" },
+          { "id": "WARBEASTS", "name": "WarBeasts" },
+          { "id": "LIGHT_CHARIOTS", "name": "Light Chariots" },
+          { "id": "HEAVY_CHARIOTS", "name": "Heavy Chariots" },
+          { "id": "MONSTRUOS_CREATURES", "name": "Monstrous Creatures" },
+          { "id": "BEHEMOTHS", "name": "Behemoths" },
+          { "id": "WAR_MACHINE", "name": "War Machines" }
+        ]
+      },
+    {
+      "id": "UNIT_CATEGORY",
+      "name": "Unit Category",
+      "subCategories": [
+        { "id": "CORE", "name": "Core" },
+        { "id": "CHARACTER", "name": "Character" },
+        { "id": "SPECIAL", "name": "Special" },
+        { "id": "SINGULAR", "name": "Singular" }
+      ]
+    }
+  ],
+
+  "armies": [
+    { "id": "EMPIRE", "name": "Empire of Man" },
+    { "id": "DWARFS", "name": "Dwarfen Mountain Hold" },
+    { "id": "BRETONIA", "name": "Kingdom of Bretonia" },
+    { "id": "WOODELF", "name": "Woof Elf Realms" },
+    { "id": "HIGHELF", "name": "High Elf Reamls" },
+    { "id": "ORCS", "name": "Orcs & Goglinb Tribes" },
+    { "id": "WARRIODCHAOS", "name": "Warriors of Chaos" },
+    { "id": "BEASTMEN", "name": "Beastmen Brayherds" },
+    { "id": "TOMBKING", "name": "Tomb king of Khemri" }
+  ],
+  "gameItems": [
+    {
+      "id": "WEA_HAND_WEAPON",
+      "name": "Hand Weapon",
+      "mainCategory": { "category": "WEAPON", "subCategory": "COMBAT" },
+      "maxNumber": 1
+    },
+    {
+      "id": "WEA_CROSSBOW",
+      "mainCategory": { "category": "WEAPON", "subCategory": "RANGE" },
+      "name": "Crossbow",
+      "maxNumber": 1
+    },
+
+    {
+      "id": "WEA_GREAT_WEAPON",
+      "name": "Great Weapon",
+      "mainCategory": { "category": "WEAPON", "subCategory": "COMBAT" },
+      "maxNumber": 1
+    },
+
+    {
+      "id": "WEA_HANDGUN",
+
+      "mainCategory": { "category": "WEAPON", "subCategory": "RANGE" },
+      "name": "Handgun",
+      "maxNumber": 1
+    },
+
+    {
+      "id": "WEA_PISTOL",
+      "mainCategory": { "category": "WEAPON", "subCategory": "" },
+      "name": "Pistol",
+      "maxNumber": 1
+    },
+    {
+      "id": "WEA_BRACE_OF_PISTOLS",
+
+      "mainCategory": { "category": "WEAPON", "subCategory": "" },
+      "name": "Brace of Pistols",
+      "maxNumber": 1
+    },
+
+    {
+      "id": "WEA_THROWING_AXES",
+      "name": "Throwing Axes",
+
+      "mainCategory": { "category": "WEAPON", "subCategory": "COMBAT" },
+      "maxNumber": 1
+    },
+    {
+      "id": "WEA_THROWING_WEAPONS",
+      "name": "Throwing Weapons",
+
+      "mainCategory": { "category": "WEAPON", "subCategory": "" },
+      "maxNumber": 1
+    },
+    {
+      "id": "WEA_TWQ_WEAPONS",
+      "name": "Two Hand Weapons",
+
+      "mainCategory": { "category": "WEAPON", "subCategory": "COMBAT" },
+      "maxNumber": 1
+    },
+    {
+      "id": "WEA_CANNON",
+      "name": "Cannon",
+      "mainCategory": { "category": "WEAPON", "subCategory": "" },
+      "maxNumber": 1
+    },
+    {
+      "id": "ARM_LIGHT",
+      "name": "Light Armour",
+      "gameItemGroup": "ARMOR",
+      "mainCategory": { "category": "ARMOR", "subCategory": "" },
+      "maxNumber": 1
+    },
+    {
+      "id": "ARM_HEAVY_ARMOR",
+      "name": "Heavy Armour",
+      "mainCategory": { "category": "ARMOR", "subCategory": "" },
+      "maxNumber": 1
+    },
+    {
+      "id": "ARM_SHIELD",
+      "name": "Shield",
+
+      "mainCategory": { "category": "ARMOR", "subCategory": "" },
+      "maxNumber": 1
+    },
+    {
+      "id": "ARM_FULL_PLATE",
+      "name": "Full Plate Armour",
+
+      "mainCategory": { "category": "ARMOR", "subCategory": "" },
+      "maxNumber": 1
+    },
+    {
+      "id": "MOU_WARHORSE",
+      "name": "Warhorse",
+
+      "mainCategory": { "category": "LINKED_UNIT", "subCategory": "MOUNT" },
+      "maxNumber": 1
+    },
+    {
+      "id": "RUL_VOLLEY",
+      "name": "Volley Shoot",
+      "mainCategory": { "category": "RULE", "subCategory": "GENERAL" },
+      "cost": 0
+    },
+    {
+      "id": "RUL_DRILLED",
+      "name": "Drill Unit",
+      "mainCategory": { "category": "RULE", "subCategory": "GENERAL" },
+      "cost": 0
+    },
+    {
+      "id": "RUL_VETERANS",
+      "name": "Veterans",
+      "mainCategory": { "category": "RULE", "subCategory": "GENERAL" },
+      "cost": 0
+    }
+  ],
+  "unitProfiles":[],
+  "linkedUnitProfiles":[]
+}
