@@ -43,6 +43,8 @@ export class GameItemsHolderImp extends ItemImpl implements GameItemsHolder {
             throw Error(`Category ${categoryId} doesn't exist`);
         return res;
     }
+
+    
     getUnitProfilesBySubCategory(subCategory: string): GameItem[] {
         return this._unitProfiles.filter ((profile)  => profile.getCategoryValue().subCategory.getId()==subCategory)
     }

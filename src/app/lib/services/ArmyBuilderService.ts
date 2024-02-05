@@ -1,10 +1,13 @@
 import uuid from "react-uuid";
 import { Army, ArmyHeader } from "../model/Army";
 import { GameHeader } from "../model/Game";
-import { GameList, SelectedUnit } from "../model/GameList";
+import { GameList, } from "../model/GameList";
 import { ArmyBuilderRepository } from "../repositories/ArmyBuilderRepository";
 import { ArmyBuilderRepositoryFactory } from "../repositories/ArmyBuilderRepositoryFactory";
 import { GameItem } from "../model/GameItem";
+import { SelectedUnit } from "../model/SelectedUnit";
+import { CategoryDefinition } from "../model/GameCategory";
+import { Item } from "../model/Item";
 
 export interface ArmyBuilderService {
 
@@ -19,9 +22,11 @@ export interface ArmyBuilderService {
 
 
     checkOptionEntry(gameListId: string,unitId:string, entryId: string): GameList;
+    setSelectedUnitSize(gameListId: string,unitId:string, size: number): GameList;
+    
     getSelectedUnitById(gameListId: string,unitId:string):SelectedUnit
 
-    getSelectableProfiles(armyId:string, gameId:string, category:string ):GameItem[]
+    getSelectableProfilesByMainCategory(armyId:string, ):Map<Item,GameItem[]>;
     
     DEVELOPMENT_createTOWDwarfsList():GameList
 
@@ -34,6 +39,41 @@ export class ArmyBuilderServiceImpl implements ArmyBuilderService {
 
     constructor (armyBuilderRepositor:ArmyBuilderRepository) {
         this._armyBuilderRepository=armyBuilderRepositor;
+    }
+    getSelectableProfilesByMainCategory(armyId: string): Map<Item, GameItem[]> {
+       try {
+            const army = this._armyBuilderRepository.getArmy(armyId)
+            if(army==undefined) 
+                throw Error(`Army with id ${armyId} doesn't exist`)
+            const mainCategory = army.getGame().getUnitsMainCategory()
+            if(mainCategory==undefined) 
+                throw Error(`Army with id ${armyId} belongs to a game that has no main category`)
+            const res = new  Map<Item, GameItem[]>()
+            mainCategory.getSubCategories().forEach ( ( subCategory )=> {
+                const units = army.getUnitProfilesBySubCategory(subCategory.getId())
+                res.set(subCategory,units)
+            })
+            return res;
+        } catch (error) {
+            throw(error)
+        }
+    }
+
+    setSelectedUnitSize(gameListId: string, unitId: string, size: number): GameList {
+        try {
+            const gameList:GameList = this._armyBuilderRepository.getGameList(gameListId)
+            if (gameList==undefined) 
+                throw Error(`Game List with id ${gameListId} doesn't exist`)
+            const unit:SelectedUnit= gameList.getSelectedUnitById(unitId)
+            if (unit==undefined) 
+                throw Error(`Selected Unit with id ${unitId} doesn't exist`)
+            unit.setUnitSize(size);
+            return gameList
+        } catch (error) {
+            throw(error)
+        }
+
+
     }
     getSelectedUnitById(gameListId: string, unitId: string): SelectedUnit {
         try {
@@ -61,7 +101,7 @@ export class ArmyBuilderServiceImpl implements ArmyBuilderService {
 
     }
     DEVELOPMENT_createTOWDwarfsList(): GameList {
-        const dwarfsArmy = this._armyBuilderRepository.getArmy("DWARFS","OLDWORLD")
+        const dwarfsArmy = this._armyBuilderRepository.getArmy("DWARFS")
         const gameList = dwarfsArmy.createList(uuid(),"LLista Development",2000)
         this._armyBuilderRepository.persistGameList(gameList);
         return gameList;
@@ -79,20 +119,14 @@ export class ArmyBuilderServiceImpl implements ArmyBuilderService {
     }
 
 
-    getArmy(armyId: string, gameId: string): Army {
-        return this._armyBuilderRepository.getArmy(armyId,gameId)
+    getArmy(armyId: string): Army {
+        return this._armyBuilderRepository.getArmy(armyId)
     }
 
     buildSelectedUnit(profileId: string): SelectedUnit {
         throw new Error("Method not implemented.");
     }
 
-    getSelectableProfiles(armyId:string, gameId:string,category:string ):GameItem[] {
-        const army = this._armyBuilderRepository.getArmy(armyId,gameId);
-        const gameItems = army.getUnitProfilesBySubCategory(category);
-        return gameItems.filter( (gameItem)=> gameItem.isSelectable)
-
-    }
 
     addUnitProfileToGameList(unitProfileId:string, gameList:GameList):GameList {
             const unitProfile = this._armyBuilderRepository.getUnitProfile(gameList.getArmy().getId(),unitProfileId)

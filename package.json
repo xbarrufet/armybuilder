@@ -12,6 +12,7 @@
     "@heroicons/react": "^2.1.1",
     "clsx": "^2.1.0",
     "country-flag-icons": "^1.5.9",
+    "daisyui": "^4.6.1",
     "flowbite-react": "^0.7.2",
     "json2typescript": "^1.5.1",
     "next": "14.0.4",

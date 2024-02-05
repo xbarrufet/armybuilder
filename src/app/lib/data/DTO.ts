@@ -16,6 +16,12 @@ export type CategoryDTO = {
     subcategories:ItemDTO[]
 }
 
+export type ListValidationRuleDTO = {
+
+    counterType:string,
+    limits:{subCategory:string, min?:number|undefined,max?:number|undefined}[]
+
+}
 export type GameItemDTO  = {
     id: string,
     name: string,

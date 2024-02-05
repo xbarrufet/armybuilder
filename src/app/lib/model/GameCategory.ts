@@ -14,7 +14,7 @@ export type CategoryValue = {
 
 export interface CategoryDefinition extends Item{
     getSubCategories(filter?:string[]):Item[];
-    
+    getSubCategoryById(subCategory:string):Item
 
 }
 
@@ -26,6 +26,12 @@ export class CategoryDefinitionImpl extends ItemImpl implements CategoryDefiniti
     constructor(id:string,name:string, subCategories?:Item[]|undefined) {
         super(id,name);
         this._subCategories=subCategories==undefined?[]:subCategories;
+    }
+    getSubCategoryById(subCategory: string): Item {
+        const res = this._subCategories.find((subcategory) => subCategory == subcategory.getId() )
+        if(res == undefined)
+            return ItemFactory.build(subCategory,subCategory);
+        return res;
     }
 
     getSubCategories(filter?:string[]):Item[] {
@@ -49,6 +55,8 @@ export class CategoryDefinitionImpl extends ItemImpl implements CategoryDefiniti
 export class CategoryFactory {
 
     static EMPTY_CATAGORY_VALUE = {  category:ItemFactory.EMPTY_ITEM ,subCategory:ItemFactory.EMPTY_ITEM};
+    static EMPTY_CATEGORY_DEFINITION = new CategoryDefinitionImpl("","",[])
+
 
 
     static buildCategoryDefinition(categoryId:string,categoryName:string , subCategories:Item[]):CategoryDefinition {

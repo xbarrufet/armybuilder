@@ -1,11 +1,13 @@
 import uuid from "react-uuid";
-import { UnitProfile } from "./UnitProfile"
+import { UnitProfile, UnitProfileFactory } from "./UnitProfile"
 import { Army } from "./Army";
 import { Item, ItemImpl } from "./Item";
 import {  OptionType, UnitOptionsEntry, UnitOptionsSection } from "./UnitOptions";
 import { CategoryDefinition, CategoryValue } from "./GameCategory";
 import { GameItem } from "./GameItem";
 import { Game } from "./Game";
+import { SelectedUnit, SelectedUnitFactory } from "./SelectedUnit";
+import { CounterType, ListValidationResult } from "./ListValidationRule";
 
 
 
@@ -16,93 +18,29 @@ enum EquipmentType {BASE=0,EXTRA=1}
 
 
 export interface GameList extends Item{
+    
+    getMaxPoints():number,
     getNumModels():number ;
     getTotalCost():number;
     getArmy():Army;
-    addUnitProfile(unit:UnitProfile):GameList;
-    selectOptionEntry(selectedUnitId:string,optionEntryId:string,value:any):void
-
-    getUnitsByMainSubCategory(subCategory:string):SelectedUnit[]
     getSelectedUnitById(selectedUnitId:string):SelectedUnit
 
     
-}
+    addUnitProfile(unit:UnitProfile):GameList;
+    selectOptionEntry(selectedUnitId:string,optionEntryId:string,value:any):void
 
+    getSelectedUnitsByMainSubCategory(subCategory:string):SelectedUnit[]    
+    getSubCategoryCounterText(subCategory:string):string
+    getSubCategoryTotalCost(subCategory:string):number
 
-export class SelectedUnit  {
-    private _id:string;
-    private _optionSections:UnitOptionsSection[]
-    private _optionsEntry:Map<string, UnitOptionsEntry>
-    private _unitProfile:GameItem
-    private _numModels:number;
-    private _baseCost:number = 0;
     
-
-    constructor (id:string, unitProfile:UnitProfile) {
-        this._id=id;
-        this._numModels=unitProfile.getMinNumber();
-        this._unitProfile=unitProfile;
-        this._optionSections=unitProfile.getUnitOptionsSection();
-        this._optionsEntry = new Map<string, UnitOptionsEntry>();
-        this.storeOptioEntries(unitProfile.getUnitOptionsSection())
-        this._baseCost=unitProfile.getCost()
-      
-        
-    }
-
-    private storeOptioEntries(sections:UnitOptionsSection[]):void {
-        sections.forEach ( (section) => {
-            section.getOptionEntries().forEach ((entry) => {
-                 if(entry.getId().length>0)
-                     this._optionsEntry.set(entry.getId(),entry)
-                 if(entry.getChildOptionSections()!=undefined && entry.getChildOptionSections().length>0) 
-                    this.storeOptioEntries(entry.getChildOptionSections())
-            }) 
-        })
-    }
-
-
-
-    id():string {
-        return this._id;
-    }
-
-
-    numModels():number {
-        return this._numModels;
-    }
-
-    getTotalCost():number {
-        var cost = this._unitProfile.getCost()
-        this._optionsEntry.forEach ((entry,key)=> {
-            if(entry.isSelected()) {
-                cost = cost + (entry.costPerModel()?entry.getCost()*this._numModels:entry.getCost())
-            }
-        })
-        return cost;
-
-    }
-
-    selectOptions(optionEntryId:string,value:any) {
-        const entry = this._optionsEntry.get(optionEntryId)
-        if(entry==undefined)
-            throw Error(`Entry ${optionEntryId} doen't exist in the List`)
-        entry.getParentSection().selectOptionEntry(optionEntryId,true)
-    }
-
-     getUnitProfile():GameItem {
-        return this._unitProfile;
-    }
-
-    getOptionSections():UnitOptionsSection[] {
-        return this._optionSections;
-    }
 }
 
 
 
 
-export class GameListImpl extends ItemImpl implements GameList {
+
+class GameListImpl extends ItemImpl implements GameList {
 
     private _army:Army;
     private _dateCreated:Date;
@@ -116,13 +54,45 @@ export class GameListImpl extends ItemImpl implements GameList {
         this._dateCreated=new Date();
         this._selectedUnits=[];
     }
+    getSubCategoryTotalCost(subCategory: string): number {
+        return this._selectedUnits.filter ( (unit) => unit.getUnitProfile().getCategoryValue().subCategory.getId()==subCategory)
+                                    .map((unit) => unit.getTotalCost())
+                                    .reduce((total, item ) => total + item,0 )
+    }
+
+
+    getSubCategoryCounterText(subCategory: string): string {
+        var res:string = ''
+        const listValidationRule = this._army.getGame().getListValidationRule()
+        if(listValidationRule.getCounterType()==CounterType.POINTS)
+            res = res + this.getSubCategoryTotalCost(subCategory)
+        else
+            res = res + this.getSelectedUnitsByMainSubCategory(subCategory).length
+      
+        //if has max limit will be shown, if not show min limit if any and starting for the limit
+        if(listValidationRule.hasMaxLimit(subCategory))
+           if(listValidationRule.getCounterType()==CounterType.POINTS)
+                res = res + '/' + listValidationRule.getMaxLimit(subCategory)*this._maxPoints
+            else 
+                res = res + '/' + listValidationRule.getMaxLimit(subCategory)
+        else if(listValidationRule.hasMinLimit(subCategory))
+            if(listValidationRule.getCounterType()==CounterType.POINTS)
+                res =  (listValidationRule.getMinLimit(subCategory)*this._maxPoints) + '/' + res
+            else
+                res =  listValidationRule.getMinLimit(subCategory) + '/' + res
+        return res;
+    }
+
+    getMaxPoints(): number {
+        return this._maxPoints;
+    }
     getSelectedUnitById(selectedUnitId: string): SelectedUnit {
         const res = this._selectedUnits.find ( (unit)=> unit.id() ==selectedUnitId)
         if(res ==undefined)
             throw new Error(`Selected Unit ${selectedUnitId} doesn't exist`);
         return res;
     }
-    getUnitsByMainSubCategory(subCategory: string): SelectedUnit[] {
+    getSelectedUnitsByMainSubCategory(subCategory: string): SelectedUnit[] {
         const mainCategory = this._army.getGame().getUnitsMainCategory();
 
         return this._selectedUnits.filter( (unit) => 
@@ -140,15 +110,17 @@ export class GameListImpl extends ItemImpl implements GameList {
   
     
     getNumModels(): number {
-        return this._selectedUnits.map((unit) => unit.numModels()).reduce((total, item ) => total + item )
+        return this._selectedUnits.map((unit) => unit.numModels()).reduce((total, item ) => total + item,0 )
     }
+
+
     getTotalCost(): number {
-        return this._selectedUnits.map((unit) => unit.getTotalCost()).reduce((total, item ) => total + item )
+        return this._selectedUnits.map((unit) => unit.getTotalCost()).reduce((total, item ) => total + item,0 )
     }
 
 
     addUnitProfile(unit: UnitProfile): GameList {
-        const selectedUnit  = new SelectedUnit(uuid(),unit)
+        const selectedUnit  = SelectedUnitFactory.build(uuid(),unit)
         this._selectedUnits.push(selectedUnit);
         return this;
     }
@@ -175,6 +147,8 @@ export class GameListImpl extends ItemImpl implements GameList {
        
     }
 
+   
+
 
 
 }
@@ -185,3 +159,7 @@ export class GameListFactory {
         return new GameListImpl(id,name,army,maxPoints);
     }
 }
+
+
+
+

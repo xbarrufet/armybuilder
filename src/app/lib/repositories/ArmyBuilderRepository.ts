@@ -3,12 +3,13 @@ import { Game, GameHeader, GameHeaderImpl, GameImpl } from "../model/Game";
 import dataTOW from '@/data/TOW/game_configuration.json'
 import dataDWARF from '@/data/TOW/dwarfs/dwarfs_army_configuration.json'
 import { Item, ItemFactory, ItemImpl } from "../model/Item";
-import { CategoryDefitionDTO, GameItemDTO, ItemDTO, UnitOptionsSectionDTO, UnitProfileDTO } from "../data/DTO";
+import { CategoryDefitionDTO, GameItemDTO, ItemDTO, ListValidationRuleDTO, UnitOptionsSectionDTO, UnitProfileDTO } from "../data/DTO";
 import { GameItem, GameItemFactory } from "../model/GameItem";
 import { CategoryDefinition, CategoryDefinitionImpl, CategoryValue, GameItemGroup } from "../model/GameCategory";
 import { GameList } from "../model/GameList";
 import { UnitProfile, UnitProfileFactory } from "../model/UnitProfile";
 import { OptionTarget, OptionType, UnitOptionsSectionImpl, UnitOptionsEntry, UnitOptionsEntryImpl, UnitOptionsFactory, UnitOptionsSection } from "../model/UnitOptions";
+import { CounterType, ListValidationRule, ListValidationRuleFactory, ValidationRuleLimits } from "../model/ListValidationRule";
 
 
 const DEFAULT_MAIN_CATEGORY="PROFILE"
@@ -17,7 +18,7 @@ export interface ArmyBuilderRepository {
 
     getGameHeaders():GameHeader[]
     getGame(gameId:string):Game
-    getArmy(armyId: string,gameId:string):Army
+    getArmy(armyId: string):Army
     persistGameList(gameList:GameList):void
     getGameList(gameListId:string):GameList
     getUnitProfile(armyId: string,unitId:string):UnitProfile;
@@ -50,7 +51,11 @@ export class ArmyBuilderRepositoryJSON implements ArmyBuilderRepository {
             const unitCategoriesDefinition = this.buildCategoryDefinitions( dataTOW["unitCategories"]);
             const gameItems = this.buildGameItems(dataTOW["gameItems"],categoriesDefinition);
             const profiles = this.buildGameItems(dataTOW["unitProfiles"],unitCategoriesDefinition);
-            const game = new GameImpl(header.getId(),header.getName(),armyHeaders,categoriesDefinition, dataTOW["unitsMainCategory"],unitCategoriesDefinition,gameItems,profiles);
+            const mainCategoryDefinition = unitCategoriesDefinition.find (( category) => category.getId()== dataTOW["unitsMainCategory"])
+            if(mainCategoryDefinition==undefined) 
+                throw Error(`Main Category definiion nor exists or is not defined`)
+            const ListValidationRule = this.buildListValidationRule(dataTOW["listValidationRule"],mainCategoryDefinition)
+            const game = new GameImpl(header.getId(),header.getName(),armyHeaders,categoriesDefinition, dataTOW["unitsMainCategory"],unitCategoriesDefinition,gameItems,profiles,ListValidationRule);
             this._games.set(gameId,game)
             return game;
         }
@@ -112,6 +117,15 @@ export class ArmyBuilderRepositoryJSON implements ArmyBuilderRepository {
         return res;
     }
 
+
+    private buildListValidationRule(data:ListValidationRuleDTO,mainCategoryDefinition:CategoryDefinition):ListValidationRule {
+        const counterType: CounterType = CounterType[data.counterType as keyof typeof CounterType]
+        const limits = new Map<string, ValidationRuleLimits>();
+        data.limits.forEach ( ({subCategory,min,max}) =>  {
+            limits.set(subCategory,ListValidationRuleFactory.buildLimit(min,max))
+        } )
+        return ListValidationRuleFactory.build(mainCategoryDefinition,limits,counterType);
+    }
 
     private buildCategoryDefinitions( categoriesDefinition:CategoryDefitionDTO[]):CategoryDefinition[] {
         const res:CategoryDefinition[] =categoriesDefinition.map((category) => {
@@ -206,6 +220,7 @@ export class ArmyBuilderRepositoryJSON implements ArmyBuilderRepository {
         return gameList;
     }
 
+    
 
     
         

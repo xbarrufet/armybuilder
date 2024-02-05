@@ -22,6 +22,9 @@ export interface UnitOptionsSection  {
     getSectionName():string;
     getFeedingCategory():CategoryDefinition|undefined;
     selectOptionEntry(entryId:string, value:boolean):void
+    getMaxCost():number;
+    getAccumulatedCost():number
+    isAccumaltedCostValid():boolean
    
 }
 
@@ -49,15 +52,26 @@ export class UnitOptionsSectionImpl  implements UnitOptionsSection{
     private _optionEntries:UnitOptionsEntry[]=[];
     private _sectionName:string;
     private _feedingCategory:CategoryDefinition|undefined
+    private _maxCost:number
  
 
-    constructor( sectionName: string, optionType:OptionType,optionTarget:OptionTarget,feedingCategory?:CategoryDefinition) {
+    constructor( sectionName: string, optionType:OptionType,optionTarget:OptionTarget,maxCost:number,feedingCategory?:CategoryDefinition) {
         this._sectionName=sectionName
         this._optionType=optionType;
         this._optionTarget=optionTarget;
         this._feedingCategory=feedingCategory;
+        this._maxCost=maxCost
       
       
+    }
+    getMaxCost(): number {
+       return this._maxCost;
+    }
+    getAccumulatedCost(): number {
+        return this._optionEntries.map( (entry) => entry.getCost()).reduce( (accum,cost)=> accum + cost)
+    }
+    isAccumaltedCostValid(): boolean {
+       return this.getAccumulatedCost()<=this.getMaxCost();
     }
     selectOptionEntry(entryId: string): void {
         //in case of option or dd--> unselect rest due to only one is allowes
@@ -185,6 +199,7 @@ export class UnitOptionsFactory {
             sectionDTO.sectionName,
             OptionType[sectionDTO.optionType as keyof typeof OptionType],
             OptionTarget[sectionDTO.target as keyof typeof OptionTarget],
+            sectionDTO.maxCost==undefined?0:sectionDTO.maxCost,
             category);
 
         if(sectionDTO.feedingCategory!=undefined && sectionDTO.feedingCategory.length>0) {
@@ -208,7 +223,7 @@ export class UnitOptionsFactory {
         let res:UnitOptionsEntry[]=[];
         entries.forEach( (entry) => {
             const subCategory = feedingCategory.getSubCategories().find ( (sub) => sub.getId()==entry.items[0])
-            res.push( this.buildTitleEntry(subCategory!=undefined?subCategory.getId():entry.items[0],parentSection))
+            res.push( this.buildTitleEntry(subCategory!=undefined?subCategory.getName():entry.items[0],parentSection))
             res = res.concat(this.builEntryFeededbyCategory(entry,feedingCategory,gameItems,parentSection))
     
         })

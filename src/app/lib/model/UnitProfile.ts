@@ -1,4 +1,4 @@
-import { CategoryValue } from "./GameCategory";
+import { CategoryFactory, CategoryValue } from "./GameCategory";
 import { UnitOptionsSection } from "./UnitOptions";
 import { GameItem, GameItemImpl } from "./GameItem";
 
@@ -42,6 +42,7 @@ export class UnitProfileImp extends GameItemImpl implements UnitProfile {
 export class UnitProfileFactory {
 
   
+   static EMPTY_UNIT_PROFILE = new UnitProfileImp("","",CategoryFactory.EMPTY_CATAGORY_VALUE,9,[])
    
    static build(id: string, name: string,mainCategoryValue:CategoryValue, cost:number,unitOptionsSections:UnitOptionsSection[],maxNumber?:number,minNumber?:number,isSelectable?:boolean,otherCategoryValues?:CategoryValue[]):UnitProfile {
 

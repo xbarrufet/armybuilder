@@ -2,6 +2,15 @@
   "id": "TOW",
   "name": "The Old World",
   "unitsMainCategory": "UNIT_CATEGORY",
+  "listValidationRule": {
+    "counterType":"POINTS",
+    "limits":[
+      {"subCategory":"CORE","min":0.25},
+      {"subCategory":"CHARACTER","max":0.5},
+      {"subCategory":"SPECIAL","max":0.5},
+      {"subCategory":"SINGULAR","max":0.25}
+    ]
+  },
   "gameItemCategories": [
     {
       "id": "WEAPON",
@@ -52,8 +61,8 @@
     "id": "UNIT_CATEGORY",
     "name": "Unit Category",
     "subCategories": [
-      { "id": "CORE", "name": "Core" },
       { "id": "CHARACTER", "name": "Character" },
+      { "id": "CORE", "name": "Core" },
       { "id": "SPECIAL", "name": "Special" },
       { "id": "SINGULAR", "name": "Singular" }
     ]
